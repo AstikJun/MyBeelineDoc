@@ -1,0 +1,1457 @@
+{
+"openapi": "3.0.1",
+"info": {
+    "version":"3.0.1",
+"title": "Notification Service API",
+"description": "Notification Service API",
+"contact": {
+"name": "Sky Mobile Inc",
+"url": "https://www.beeline.kg/",
+"email": "tzhamakeev@beeline.kg"
+}
+},
+"servers": [
+    {
+    "url": "https://api.beeline.kg/notification",
+    "description": "Generated server url"
+    }
+    ],
+    "security": [
+    {
+    "spring_oauth": []
+    }
+    ],
+    "paths": {
+    "/api/v1/management/template/{templateCode}": {
+    "get": {
+    "tags": [
+    "template-controller"
+    ],
+        "description": "",
+
+        "operationId": "viewAll",
+    "parameters": [
+    {
+    "name": "templateCode",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "in": "header",
+    "$ref": "#/components/parameters/Version"
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "*/*": {
+    "schema": {
+    "type": "object"
+    }
+    }
+    }
+    },
+    "400": {
+    "description": "Bad Request",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "403": {
+    "description": "Forbidden",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "500": {
+    "description": "Internal Server Error",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    }
+    }
+    },
+    "put": {
+    "tags": [
+    "template-controller"
+    ],
+    "operationId": "put",
+    "parameters": [
+    {
+    "in": "header",
+    "$ref": "#/components/parameters/Version"
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/TemplateDto"
+    }
+    }
+    },
+    "required": true
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "*/*": {
+    "schema": {
+    "type": "object"
+    }
+    }
+    }
+    },
+    "400": {
+    "description": "Bad Request",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "403": {
+    "description": "Forbidden",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "500": {
+    "description": "Internal Server Error",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/v1/live-tex/{subscriptionId}/{msisdn}/assign": {
+    "put": {
+    "tags": [
+    "live-tex-controller"
+    ],
+    "operationId": "token",
+    "parameters": [
+    {
+    "name": "subscriptionId",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    {
+    "name": "msisdn",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    {
+    "in": "header",
+    "$ref": "#/components/parameters/Version"
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/LiveTexTokenDto"
+    }
+    }
+    },
+    "required": true
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    },
+    "400": {
+    "description": "Bad Request",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "403": {
+    "description": "Forbidden",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "500": {
+    "description": "Internal Server Error",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/v1/sms/{msisdn}/send": {
+    "post": {
+    "tags": [
+    "sms-controller"
+    ],
+    "operationId": "send",
+    "parameters": [
+    {
+    "name": "msisdn",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    {
+    "in": "header",
+    "$ref": "#/components/parameters/Version"
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/SmsRequest"
+    }
+    }
+    },
+    "required": true
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "*/*": {
+    "schema": {
+    "type": "object"
+    }
+    }
+    }
+    },
+    "400": {
+    "description": "Bad Request",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "403": {
+    "description": "Forbidden",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "500": {
+    "description": "Internal Server Error",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/v1/push/{msisdn}/token": {
+    "post": {
+    "tags": [
+    "push-controller"
+    ],
+    "operationId": "token_1",
+    "parameters": [
+    {
+    "name": "msisdn",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    {
+    "in": "header",
+    "$ref": "#/components/parameters/Version"
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "application/json": {
+    "schema": {
+    "$ref": "#/components/schemas/PushToken"
+    }
+    }
+    },
+    "required": true
+    },
+    "responses": {
+    "200": {
+    "description": "OK"
+    },
+    "400": {
+    "description": "Bad Request",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "403": {
+    "description": "Forbidden",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "500": {
+    "description": "Internal Server Error",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/v1/push/{msisdn}/send-batch-notification": {
+    "post": {
+    "tags": [
+    "push-controller"
+    ],
+    "description": "Рассылка push - уведомлений",
+    "operationId": "sendBatchNotification",
+    "parameters": [
+    {
+    "name": "msisdn",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    {
+    "in": "header",
+    "$ref": "#/components/parameters/Version"
+    }
+    ],
+    "requestBody": {
+    "content": {
+    "multipart/form-data": {
+    "schema": {
+    "$ref": "#/components/schemas/SendBatchNotificationForm"
+    }
+    }
+    }
+    },
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "*/*": {
+    "schema": {
+    "type": "string"
+    }
+    }
+    }
+    },
+    "400": {
+    "description": "Bad Request",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "403": {
+    "description": "Forbidden",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "500": {
+    "description": "Internal Server Error",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/v1/push/{msisdn}/continue-send-batch-notification/{batchId}": {
+    "post": {
+    "tags": [
+    "push-controller"
+    ],
+    "description": "Рассылка push - перезапуск прерванной отправки пакета (не запускать, если отправка реально не прервывалась, иначе будет отправлено дважды)",
+    "operationId": "continueSendBatchNotification",
+    "parameters": [
+    {
+    "name": "msisdn",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    {
+    "name": "batchId",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    {
+    "in": "header",
+    "$ref": "#/components/parameters/Version"
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "*/*": {
+    "schema": {
+    "type": "string"
+    }
+    }
+    }
+    },
+    "400": {
+    "description": "Bad Request",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "403": {
+    "description": "Forbidden",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "500": {
+    "description": "Internal Server Error",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/v1/push/{msisdn}/ping": {
+    "get": {
+    "tags": [
+    "push-controller"
+    ],
+    "operationId": "ping",
+    "parameters": [
+    {
+    "name": "msisdn",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    {
+    "in": "header",
+    "$ref": "#/components/parameters/Version"
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "*/*": {
+    "schema": {
+    "type": "string"
+    }
+    }
+    }
+    },
+    "400": {
+    "description": "Bad Request",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "403": {
+    "description": "Forbidden",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "500": {
+    "description": "Internal Server Error",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/v1/push/{msisdn}/get-batch-notification-statistic/{batchId}": {
+    "get": {
+    "tags": [
+    "push-controller"
+    ],
+    "description": "Результаты рассылки push - уведомлений",
+    "operationId": "getBatchNotificationStatistic",
+    "parameters": [
+    {
+    "name": "msisdn",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    {
+    "name": "batchId",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    {
+    "in": "header",
+    "$ref": "#/components/parameters/Version"
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/BatchPushDto"
+    }
+    }
+    }
+    },
+    "400": {
+    "description": "Bad Request",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "403": {
+    "description": "Forbidden",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "500": {
+    "description": "Internal Server Error",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/v1/push/{msisdn}/get-batch-notification-statistic/date/{date}": {
+    "get": {
+    "tags": [
+    "push-controller"
+    ],
+    "description": "Результаты рассылки push - уведомлений за указанную дату",
+    "operationId": "getBatchNotificationStatistic_1",
+    "parameters": [
+    {
+    "name": "msisdn",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    {
+    "name": "date",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "string",
+    "format": "date"
+    }
+    },
+    {
+    "in": "header",
+    "$ref": "#/components/parameters/Version"
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/BatchPushesForDateDto"
+    }
+    }
+    }
+    },
+    "400": {
+    "description": "Bad Request",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "403": {
+    "description": "Forbidden",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "500": {
+    "description": "Internal Server Error",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/v1/push/{msisdn}/get-batch-notification-errors/{batchId}": {
+    "get": {
+    "tags": [
+    "push-controller"
+    ],
+    "description": "Результаты рассылки push - уведомлений (номера с ошибками)",
+    "operationId": "getBatchNotificationErrors",
+    "parameters": [
+    {
+    "name": "msisdn",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    {
+    "name": "batchId",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    {
+    "in": "header",
+    "$ref": "#/components/parameters/Version"
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "*/*": {
+    "schema": {
+    "type": "array",
+    "items": {
+    "type": "string"
+    }
+    }
+    }
+    }
+    },
+    "400": {
+    "description": "Bad Request",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "403": {
+    "description": "Forbidden",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "500": {
+    "description": "Internal Server Error",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/v1/management/template/{templateCode}/{locale}": {
+    "get": {
+    "tags": [
+    "template-controller"
+    ],
+    "operationId": "view",
+    "parameters": [
+    {
+    "name": "templateCode",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "locale",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "string",
+    "enum": [
+    "RU",
+    "EN",
+    "KY",
+    "UZ"
+    ]
+    }
+    },
+    {
+    "in": "header",
+    "$ref": "#/components/parameters/Version"
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "*/*": {
+    "schema": {
+    "type": "object"
+    }
+    }
+    }
+    },
+    "400": {
+    "description": "Bad Request",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "403": {
+    "description": "Forbidden",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "500": {
+    "description": "Internal Server Error",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/v1/management/template/{templateCode}/{locale}/xml": {
+    "get": {
+    "tags": [
+    "template-controller"
+    ],
+    "operationId": "viewAsXml",
+    "parameters": [
+    {
+    "name": "templateCode",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "name": "locale",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "string",
+    "enum": [
+    "RU",
+    "EN",
+    "KY",
+    "UZ"
+    ]
+    }
+    },
+    {
+    "in": "header",
+    "$ref": "#/components/parameters/Version"
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "application/xml": {
+    "schema": {
+    "type": "object"
+    }
+    }
+    }
+    },
+    "400": {
+    "description": "Bad Request",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "403": {
+    "description": "Forbidden",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "500": {
+    "description": "Internal Server Error",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/v1/management/template/{templateCode}/xml": {
+    "get": {
+    "tags": [
+    "template-controller"
+    ],
+    "operationId": "viewAllAsXml",
+    "parameters": [
+    {
+    "name": "templateCode",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "string"
+    }
+    },
+    {
+    "in": "header",
+    "$ref": "#/components/parameters/Version"
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "application/xml": {
+    "schema": {
+    "type": "object"
+    }
+    }
+    }
+    },
+    "400": {
+    "description": "Bad Request",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "403": {
+    "description": "Forbidden",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "500": {
+    "description": "Internal Server Error",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "/api/v1/live-tex/{subscriptionId}/{msisdn}/fetchLiveTexToken": {
+    "get": {
+    "tags": [
+    "live-tex-controller"
+    ],
+    "operationId": "get",
+    "parameters": [
+    {
+    "name": "subscriptionId",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    {
+    "name": "msisdn",
+    "in": "path",
+    "required": true,
+    "schema": {
+    "type": "integer",
+    "format": "int64"
+    }
+    },
+    {
+    "in": "header",
+    "$ref": "#/components/parameters/Version"
+    }
+    ],
+    "responses": {
+    "200": {
+    "description": "OK",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/LiveTexTokenDto"
+    }
+    }
+    }
+    },
+    "400": {
+    "description": "Bad Request",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "403": {
+    "description": "Forbidden",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    },
+    "500": {
+    "description": "Internal Server Error",
+    "content": {
+    "*/*": {
+    "schema": {
+    "$ref": "#/components/schemas/RestResponseObject"
+    }
+    }
+    }
+    }
+    }
+    }
+    }
+    },
+    "components": {
+    "schemas": {
+    "Message": {
+    "type": "object",
+    "properties": {
+    "message": {
+    "type": "string"
+    }
+    }
+    },
+    "RestResponseObject": {
+    "type": "object",
+    "properties": {
+    "code": {
+    "type": "string"
+    },
+    "data": {
+    "type": "object"
+    },
+    "type": {
+    "type": "string"
+    },
+    "errors": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/Message"
+    }
+    }
+    }
+    },
+    "TemplateDto": {
+    "required": [
+    "btn1_text",
+    "btn1_url",
+    "content",
+    "expanded",
+    "inner_content",
+    "inner_title",
+    "lang",
+    "perform_action",
+    "template_code",
+    "title",
+    "type"
+    ],
+    "type": "object",
+    "properties": {
+    "template_code": {
+    "type": "string"
+    },
+    "lang": {
+    "type": "string",
+    "enum": [
+    "RU",
+    "EN",
+    "KY",
+    "UZ"
+    ]
+    },
+    "title": {
+    "type": "string"
+    },
+    "inner_title": {
+    "type": "string"
+    },
+    "content": {
+    "type": "string"
+    },
+    "expanded": {
+    "type": "string"
+    },
+    "inner_content": {
+    "type": "string"
+    },
+    "btn1_text": {
+    "type": "string"
+    },
+    "btn1_url": {
+    "type": "string"
+    },
+    "btn2_text": {
+    "type": "string"
+    },
+    "btn2_url": {
+    "type": "string"
+    },
+    "img": {
+    "type": "string"
+    },
+    "banner_img": {
+    "type": "string"
+    },
+    "type": {
+    "type": "string",
+    "enum": [
+    "NOTI",
+    "SMS"
+    ]
+    },
+    "perform_action": {
+    "type": "boolean"
+    }
+    }
+    },
+    "LiveTexTokenDto": {
+    "type": "object",
+    "properties": {
+    "token": {
+    "type": "string"
+    }
+    }
+    },
+    "SmsRequest": {
+    "type": "object",
+    "properties": {
+    "text": {
+    "maxLength": 500,
+    "minLength": 1,
+    "type": "string"
+    },
+    "scheduleAt": {
+    "type": "string",
+    "format": "date-time"
+    }
+    }
+    },
+    "AccessToken": {
+    "type": "object",
+    "properties": {
+    "token": {
+    "type": "string"
+    },
+    "number": {
+    "type": "integer",
+    "format": "int64"
+    }
+    }
+    },
+    "PushToken": {
+    "required": [
+    "customerNumbers",
+    "deviceId",
+    "deviceName",
+    "os",
+    "pushToken"
+    ],
+    "type": "object",
+    "properties": {
+    "os": {
+    "type": "string",
+    "enum": [
+    "ANDROID",
+    "IOS"
+    ]
+    },
+    "pushToken": {
+    "type": "string"
+    },
+    "deviceId": {
+    "type": "string"
+    },
+    "deviceName": {
+    "type": "string"
+    },
+    "customerNumbers": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/AccessToken"
+    }
+    }
+    }
+    },
+    "SendBatchNotificationForm": {
+    "required": [
+    "btn1Text",
+    "btn1Url",
+    "content",
+    "expanded",
+    "file",
+    "innerContent",
+    "innerTitle",
+    "title"
+    ],
+    "type": "object",
+    "properties": {
+    "title": {
+    "type": "string",
+    "description": "Заглавие"
+    },
+    "content": {
+    "type": "string",
+    "description": "Содержание в списке уведомлений"
+    },
+    "expanded": {
+    "type": "string",
+    "description": "Содержание в шторке уведомлений у пользователя"
+    },
+    "innerTitle": {
+    "type": "string",
+    "description": "Внутреннее заглавие"
+    },
+    "innerContent": {
+    "type": "string",
+    "description": "Внутреннее содержание"
+    },
+    "img": {
+    "type": "string",
+    "description": "Ссылка на лого"
+    },
+    "bannerImg": {
+    "type": "string",
+    "description": "Ссылка на баннер"
+    },
+    "btn1Text": {
+    "type": "string",
+    "description": "Название кнопки 1"
+    },
+    "btn1Url": {
+    "type": "string",
+    "description": "Ссылка кнопки 1"
+    },
+    "btn2Text": {
+    "type": "string",
+    "description": "Название кнопки 2"
+    },
+    "btn2Url": {
+    "type": "string",
+    "description": "Ссылка кнопки 2"
+    },
+    "file": {
+    "type": "string",
+    "format": "binary"
+    }
+    }
+    },
+    "BatchPushDto": {
+    "type": "object",
+    "properties": {
+    "batchId": {
+    "type": "integer",
+    "format": "int64"
+    },
+    "createdAt": {
+    "type": "string",
+    "format": "date-time"
+    },
+    "startedAt": {
+    "type": "string",
+    "format": "date-time"
+    },
+    "finishedAt": {
+    "type": "string",
+    "format": "date-time"
+    },
+    "fileName": {
+    "type": "string"
+    },
+    "title": {
+    "type": "string"
+    },
+    "innerTitle": {
+    "type": "string"
+    },
+    "expanded": {
+    "type": "string"
+    },
+    "content": {
+    "type": "string"
+    },
+    "innerContent": {
+    "type": "string"
+    },
+    "img": {
+    "type": "string"
+    },
+    "bannerImg": {
+    "type": "string"
+    },
+    "btn1Url": {
+    "type": "string"
+    },
+    "btn1Text": {
+    "type": "string"
+    },
+    "btn2Url": {
+    "type": "string"
+    },
+    "btn2Text": {
+    "type": "string"
+    },
+    "unprocessedPushCount": {
+    "type": "integer",
+    "format": "int32"
+    },
+    "publishedPushCount": {
+    "type": "integer",
+    "format": "int32"
+    },
+    "errorPushCount": {
+    "type": "integer",
+    "format": "int32"
+    }
+    }
+    },
+    "BatchPushesForDateDto": {
+    "type": "object",
+    "properties": {
+    "date": {
+    "type": "string",
+    "format": "date"
+    },
+    "batchPushes": {
+    "type": "array",
+    "items": {
+    "$ref": "#/components/schemas/BatchPushDto"
+    }
+    }
+    }
+    }
+    },
+    "parameters": {
+    "Version": {
+    "name": "Version",
+    "in": "header",
+    "required": false,
+    "schema": {
+    "type": "string"
+    }
+    }
+    },
+    "securitySchemes": {
+    "spring_oauth": {
+    "type": "oauth2",
+    "description": "Oauth2 flow",
+    "flows": {
+    "authorizationCode": {
+    "authorizationUrl": "https://api.beeline.kg/auth/realms/skymobile/protocol/openid-connect/auth",
+    "tokenUrl": "https://api.beeline.kg/auth/realms/skymobile/protocol/openid-connect/token",
+    "refreshUrl": "https://api.beeline.kg/auth/realms/skymobile/protocol/openid-connect/token",
+    "scopes": {}
+    }
+    }
+    }
+    }
+    }
+    }
